@@ -4,9 +4,11 @@ using TestNinja.Fundamentals;
 
 namespace TestNinja.UnitTest
 {
+
+    [TestFixture]
     public class ReservationsTest
     {
-        [TestCase(TestName="Cancelled by Admin user (Return True)")]
+        [TestCase(TestName="CanBeCancelledBy: Cancelled by Admin user (Return True)")]
         public void CanBeCancelled_UserIsAdmin_ReturnsTrue()
         {
             // Arrange
@@ -19,7 +21,7 @@ namespace TestNinja.UnitTest
             Assert.IsTrue(result);
         }
 
-        [TestCase(TestName="Cancelled by creation user (Return True)")]
+        [TestCase(TestName="CanBeCancelledBy: Cancelled by creation user (Return True)")]
         public void CanBeCancelled_SameUserWhoCreated_ReturnsTrue()
         {
             var user = new User();
@@ -34,7 +36,7 @@ namespace TestNinja.UnitTest
             Assert.IsTrue(result);
         }
 
-        [TestCase(TestName="Cancelled by none admin and creation user (Return False)")]
+        [TestCase(TestName="CanBeCancelledBy: Cancelled by none admin and creation user (Return False)")]
         public void CanBeCancelled_NoneAdminUserWhoDidNotCreate_ReturnsFalse()
         {
             // Assert
