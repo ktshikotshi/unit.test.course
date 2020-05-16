@@ -14,11 +14,11 @@ namespace TestNinja.UnitTest
             _math = new Math();
         }
 
-        [TestCase(65, 34, TestName = "Sum: Sum of Arguments (Returns: 99)")]
-        public void Add_WhenCalled_ReturnSumOfArgs(int arg1, int arg2){
-            var result = _math.Add(arg1, arg2);
+        [Test]
+        public void Add_WhenCalled_ReturnSumOfArgs(){
+            var result = _math.Add(1, 2);
 
-            Assert.That(result, Is.EqualTo(99));
+            Assert.That(result, Is.EqualTo(3));
         }
 
         [TestCase(2, 1, 2, TestName = "Max: Larger of the specified arguments (Returns: 65)")]
