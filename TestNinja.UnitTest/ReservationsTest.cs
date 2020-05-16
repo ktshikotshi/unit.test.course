@@ -8,7 +8,7 @@ namespace TestNinja.UnitTest
     [TestFixture]
     public class ReservationsTest
     {
-        [TestCase(TestName="CanBeCancelledBy: Cancelled by Admin user (Return True)")]
+        [Test]
         public void CanBeCancelled_UserIsAdmin_ReturnsTrue()
         {
             // Arrange
@@ -21,7 +21,7 @@ namespace TestNinja.UnitTest
             Assert.IsTrue(result);
         }
 
-        [TestCase(TestName="CanBeCancelledBy: Cancelled by creation user (Return True)")]
+        [Test]
         public void CanBeCancelled_SameUserWhoCreated_ReturnsTrue()
         {
             var user = new User();
@@ -36,7 +36,7 @@ namespace TestNinja.UnitTest
             Assert.IsTrue(result);
         }
 
-        [TestCase(TestName="CanBeCancelledBy: Cancelled by none admin and creation user (Return False)")]
+        [Test]
         public void CanBeCancelled_NoneAdminUserWhoDidNotCreate_ReturnsFalse()
         {
             // Assert

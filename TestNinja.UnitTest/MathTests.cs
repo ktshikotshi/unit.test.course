@@ -21,25 +21,13 @@ namespace TestNinja.UnitTest
             Assert.That(result, Is.EqualTo(99));
         }
 
-        [TestCase(65, 34, TestName = "Max: Larger of the specified arguments (Returns: 65)")]
-        public void Max_FirstArgIsGreater_ReturnFirstArg(int arg1, int arg2){
-            var result = _math.Max(arg1, arg2);
+        [TestCase(2, 1, 2, TestName = "Max: Larger of the specified arguments (Returns: 65)")]
+        [TestCase(1, 2, 2, TestName = "Max: Frist Argument Is larger than second Argument (Returns: 2)")]
+        [TestCase(2, 2, 2, TestName = "Max: Arguments are equal (Returns: 2)")]
+        public void Max_WhenCalled_ReturnFirstArg(int a, int b, int expectedResult){
+            var result = _math.Max(a, b);
 
-            Assert.That(result, Is.EqualTo(65));
-        }
-
-        [TestCase(1, 2, TestName = "Max: Frist Argument Is larger than second Argument (Returns: 2)")]
-        public void Max_SeconArgIsGreater_ReturnSecontArg(int arg1, int arg2){
-            var result = _math.Max(arg1, arg2);
-
-            Assert.That(result, Is.EqualTo(2));
-        }
-
-        [TestCase(2, 2, TestName = "Max: Arguments are equal (Returns: 2)")]
-        public void Max_ArgumentsAreEqual_ReturnSameArg(int arg1, int arg2){
-            var result = _math.Max(arg1, arg2);
-
-            Assert.That(result, Is.EqualTo(2));
+            Assert.That(result, Is.EqualTo(expectedResult));
         }
     }
 }
