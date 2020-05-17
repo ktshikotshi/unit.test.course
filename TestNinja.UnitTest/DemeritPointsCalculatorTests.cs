@@ -23,20 +23,16 @@ namespace TestNinja.UnitTest
             Assert.That(() => _calculator.CalculateDemeritPoints(speed), Throws.Exception.TypeOf<ArgumentOutOfRangeException>());
         }
 
-        [Test]
-        public void CalculateDemeritPoints_WithinSpeedLimit_Returns0()
+        [TestCase(0, 0)]
+        [TestCase(64, 0)]
+        [TestCase(69, 0)]
+        [TestCase(70, 1)]
+        [TestCase(75, 2)]
+        public void CalculateDemeritPoints_WhenCaller_ReturnsPoints(int speed, int points)
         {
-            var result = _calculator.CalculateDemeritPoints(60);
+            var result = _calculator.CalculateDemeritPoints(speed);
 
-            Assert.That(result, Is.EqualTo(0));
-        }
-
-        [Test]
-        public void CalculateDemeritPoints_OverSpeedLimit_ReturnsIntGreaterThanZero()
-        {
-            var result = _calculator.CalculateDemeritPoints(220);
-
-            Assert.That(result, Is.GreaterThan(0));
+            Assert.That(result, Is.EqualTo(points));
         }
     }
 }
